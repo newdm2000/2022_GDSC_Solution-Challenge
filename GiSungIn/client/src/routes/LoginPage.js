@@ -3,17 +3,22 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { authService } from "fbase";
+import { useNavigate } from "react-router-dom";
 
-const Auth = () => {
+const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState("");
   const auth = authService;
+
+  const onRegister = (event) => {
+    navigate("/register");
+  };
+
   const onChange = (event) => {
     const {
       target: { name, value },
@@ -24,24 +29,18 @@ const Auth = () => {
       setPassword(value);
     }
   };
+
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      if (newAccount) {
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-      } else {
-        await signInWithEmailAndPassword(auth, email, password);
-      }
+      const data = await signInWithEmailAndPassword(auth, email, password);
+      navigate("/");
     } catch (error) {
+      console.log(error);
       setError(error.message);
     }
   };
 
-  const toggleAccount = () => setNewAccount((prev) => !prev);
   const onSocialClick = async (event) => {
     const auth = authService;
     const {
@@ -50,16 +49,17 @@ const Auth = () => {
     let provider;
     if (name === "google") {
       provider = new GoogleAuthProvider();
-
     } else if (name === "github") {
       provider = new GithubAuthProvider();
     }
-    const data = await signInWithPopup(auth, provider)
-    console.log(data)
+    const data = await signInWithPopup(auth, provider);
+    navigate("/");
+    console.log(data);
   };
+
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form>
         <input
           name="email"
           type="text"
@@ -76,15 +76,10 @@ const Auth = () => {
           value={password}
           onChange={onChange}
         />
-        <input
-          type="submit"
-          value={newAccount ? "Create Account" : "Sign In"}
-        />
+        <button type="button" onClick={onRegister}>Register</button>
+        <input type="submit" value="Log In" />
         {error}
       </form>
-      <span onClick={toggleAccount}>
-        {newAccount ? "Sign In" : "Create Account"}
-      </span>
       <div>
         <button onClick={onSocialClick} name="google">
           Continue with Google
@@ -97,4 +92,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default LoginPage;
