@@ -44,7 +44,7 @@ const RegisterPage = () => {
           name: name,
           email: email,
           age: age,
-          lecture: [],
+          lectures: [],
         });
       } else {
         setError("Not Confirm Password");

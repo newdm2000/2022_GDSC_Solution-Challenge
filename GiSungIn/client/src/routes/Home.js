@@ -5,7 +5,7 @@ const Home = () => {
   const [nweet, setNweet] = useState("");
   const onSubmit = (event) => {
     event.preventDefault();
-    dbService.collection("")
+    dbService.collection("");
   };
   const onChange = (event) => {
     const {

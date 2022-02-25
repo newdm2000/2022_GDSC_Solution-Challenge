@@ -28,11 +28,7 @@ const Auth = () => {
     event.preventDefault();
     try {
       if (newAccount) {
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
+        await createUserWithEmailAndPassword(auth, email, password);
       } else {
         await signInWithEmailAndPassword(auth, email, password);
       }
@@ -50,12 +46,11 @@ const Auth = () => {
     let provider;
     if (name === "google") {
       provider = new GoogleAuthProvider();
-
     } else if (name === "github") {
       provider = new GithubAuthProvider();
     }
-    const data = await signInWithPopup(auth, provider)
-    console.log(data)
+    const data = await signInWithPopup(auth, provider);
+    console.log(data);
   };
   return (
     <div>

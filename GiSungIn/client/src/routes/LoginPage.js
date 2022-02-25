@@ -59,7 +59,7 @@ const LoginPage = () => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={onSubmit}>
         <input
           name="email"
           type="text"
@@ -76,7 +76,9 @@ const LoginPage = () => {
           value={password}
           onChange={onChange}
         />
-        <button type="button" onClick={onRegister}>Register</button>
+        <button type="button" onClick={onRegister}>
+          Register
+        </button>
         <input type="submit" value="Log In" />
         {error}
       </form>
