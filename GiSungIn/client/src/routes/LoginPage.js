@@ -8,7 +8,22 @@ import {
 import { authService } from "fbase";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+import { createTheme, ThemeProvider } from "@mui/system";
+import {
+  Container,
+  Box,
+  Avatar,
+  Typography,
+  Button,
+  TextField,
+  Grid,
+  Link,
+} from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+
+const theme = createTheme();
+
+function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,40 +73,96 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={onChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={onChange}
-        />
-        <button type="button" onClick={onRegister}>
-          Register
-        </button>
-        <input type="submit" value="Log In" />
-        {error}
-      </form>
-      <div>
-        <button onClick={onSocialClick} name="google">
-          Continue with Google
-        </button>
-        <button onClick={onSocialClick} name="github">
-          Continue with Github
-        </button>
-      </div>
-    </div>
+    <Container component="main" maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <Box component="form" onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            type="email"
+            required
+            fullWidth
+            autoFocus
+            name="email"
+            id="email"
+            autoComplete="email"
+            label="Email Address"
+            value={email}
+            onChange={onChange}
+          />
+          <TextField
+            name="password"
+            type="password"
+            fullWidth
+            margin="normal"
+            label="Password"
+            id="password"
+            autoComplete="current-password"
+            required
+            value={password}
+            onChange={onChange}
+          />
+
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2">
+                Forgot password?
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link href="/register" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Sign In
+          </Button>
+          {error}
+        </Box>
+        <Grid container>
+          <Grid item xs>
+            <Button
+              sx={{ mt: 3, mb: 2, mr: 1, fontSize:12 }}
+              variant="outlined"
+              onClick={onSocialClick}
+              name="google"
+            >
+              Continue with Google
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+            fontsize
+              sx={{ mt: 3, mb: 2, ml: 1, fontSize:12}}
+              variant="outlined"
+              onClick={onSocialClick}
+              name="github"
+            >
+              Continue with Github
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   );
-};
+}
 
 export default LoginPage;
