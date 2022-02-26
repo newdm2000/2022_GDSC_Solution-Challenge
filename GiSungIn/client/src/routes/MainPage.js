@@ -1,12 +1,17 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Container } from "@mui/material";
+import MainPost from "components/mainpage/MainPost";
+
+
 
 const MainPage = () => {
   return (
-  <Button variant="contained" color="primary">
-    hello
-  </Button>)
-  ;
+    <Container disableGutters maxWidth = "1g">
+      <main>
+        <MainPost />
+      </main>
+    </Container>
+  );
 };
 
 export default MainPage;
