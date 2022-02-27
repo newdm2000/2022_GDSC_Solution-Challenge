@@ -2,8 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { AppBar, Box, Drawer, IconButton, Toolbar } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
+import {
+  AppBar,
+  Box,
+  Button,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Menu,
+  MenuItem,
+  Typography,
+  ButtonGroup,
+  Grid,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+
+const pages = ["Products", "Pricing", "Blog"];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navigation = ({ isLoggedIn }) => {
   const navigate = useNavigate();
@@ -14,37 +29,43 @@ const Navigation = ({ isLoggedIn }) => {
   const onLogInClick = () => {
     navigate("/login");
   };
+  const onHomeClick = () => {
+    navigate("/");
+  };
+  const onLecturesClick = () => {
+    navigate("/lecture");
+  };
+  const onProfileClick = () => {
+    navigate("/profile");
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/lecture">lectures</Link>
-            </li>
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            {isLoggedIn ? (
-              <button onClick={onLogOutClick}>LogOut</button>
-            ) : (
-              <button onClick={onLogInClick}>LogIn</button>
-            )}
-          </ul>
+        <Toolbar disableGutters>
+        {isLoggedIn ? (
+            <Button variant="outlined" color="secondary" onClick={onLogOutClick}>
+              LogOut
+            </Button>
+          ) : (
+            <Button variant="outlined" color="secondary" onClick={onLogInClick}>
+              LogIn
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
+      <Grid container>
+          <ButtonGroup variant="text" aria-label="text button group">
+            <Button variant="contained" onClick={onHomeClick}>
+              Home
+            </Button>
+            <Button variant="contained" onClick={onLecturesClick}>
+              lectures
+            </Button>
+            <Button variant="contained" onClick={onProfileClick}>
+              Profile
+            </Button>
+          </ButtonGroup>
+      </Grid>
     </Box>
   );
 };
