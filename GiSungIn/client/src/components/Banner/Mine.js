@@ -6,7 +6,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import BLectureCard from "./BLectureCard";
+import BLectureCard from "../body/BLectureCard";
 import { dbService } from "fbase";
 
 const Mine = () => {
@@ -27,7 +27,7 @@ const Mine = () => {
     querySnapShot.forEach((doc) => {
       setUserObj(doc.data());
     });
-    console.log(userObj.lectures);
+    console.log(userObj);
   };
 
   return (

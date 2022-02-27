@@ -13,6 +13,7 @@ import Paper from "@mui/material/Paper";
 import Search from "./Banner/Search";
 import Mine from "./Banner/Mine";
 import Setting from "./Banner/Setting";
+import Bsearch from "./body/Bsearch";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -31,22 +32,24 @@ const AppRouter = ({ isLoggedIn }) => {
           >
             <Navigation isLoggedIn={isLoggedIn} />
             <Routes>
-              <Route path="/search" element={<Search />} />
-              <Route path="/mine" element={<Mine />} />
+              <Route path="/" element={<div>hi</div>} />
+              <Route path="/search/*" element={<Search />} />
+              <Route path="/mine/*" element={<Mine />} />
               <Route path="/setting" element={<Setting />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/lecture" element={<Lecture />} />
+              <Route path="/lecture/*" element={<Lecture />} />
               <Route path="/register" element={<RegisterPage />} />
             </Routes>
           </Grid>
           <Grid item xs={false} sm={4} md={9}>
             <Routes>
-              <Route path="/search" element={<Search />} />
+              <Route path="/" element={<div>hi</div>} />
+              <Route path="/search/:key" element={<Bsearch />} />
               <Route path="/mine" element={<Mine />} />
               <Route path="/setting" element={<Setting />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/lecture" element={<Lecture />} />
+              <Route path="/lecture/:key" element={<Lecture />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
             </Routes>
