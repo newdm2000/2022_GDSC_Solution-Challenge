@@ -1,29 +1,17 @@
 import React, { useEffect, useState } from "react";
-import {
-  collection,
-  getDocs,
-  getFirestore,
-  query,
-  where,
-} from "firebase/firestore";
+import { doc, getDoc, getFirestore, query, where } from "firebase/firestore";
+import { dbService } from "fbase";
 
 const LectureCard = ({ lectureId }) => {
-  useEffect(() => {
-    refresh();
-  }, []);
+  useEffect(async () => {
+    if (lectureId) {
+      const docRef = doc(dbService, "Lectures", lectureId);
+      const docSnap = await getDoc(docRef);
+      setLectureObj(docSnap.data());
+    }
+  }, [lectureId]);
   const [lectureObj, setLectureObj] = useState("");
 
-  const refresh = async () => {
-    const dbService = getFirestore();
-    const lectureQuery = query(
-      collection(dbService, "Lectures"),
-      where("lid", "==", lectureId)
-    );
-    const querySnapShot = await getDocs(lectureQuery);
-    querySnapShot.forEach((doc) => {
-      setLectureObj(doc.data());
-    });
-  };
   const tempStyle = {
     display: "flex",
     flexDirection: "column",
@@ -37,7 +25,7 @@ const LectureCard = ({ lectureId }) => {
   return (
     <div className="container" style={tempStyle}>
       <img src={lectureObj.img_url} />
-      <h4>{lectureObj.name}</h4>
+      <h4>{lectureObj.lecName}</h4>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import {
 
 function Bsearch() {
   const leclist = [];
+  const [lid, setLid] = useState("");
   const { key } = useParams();
   useEffect(async () => {
     const user = auth.currentUser;
@@ -27,22 +28,18 @@ function Bsearch() {
     console.log(userObj);
 
     const lecturesQuery = await getDocs(collection(dbService, "Lectures"));
-    lecturesQuery.forEach((doc) => {
+    await lecturesQuery.forEach((doc) => {
       leclist.push(doc.id);
     });
-    
+    const randlec = leclist[parseInt(Math.random() * leclist.length)];
+    setLid(randlec);
+    console.log(randlec);
   }, []);
 
   const auth = authService;
   const [userObj, setUserObj] = useState("");
 
-  return (
-    <Grid container>
-      <Grid item></Grid>
-      <Grid item></Grid>
-      <Grid item></Grid>
-    </Grid>
-  );
+  return <LectureCard lectureId={lid} />;
 }
 
 export default Bsearch;
