@@ -17,9 +17,6 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 const Navigation = ({ isLoggedIn }) => {
   const navigate = useNavigate();
   const onLogOutClick = () => {
@@ -29,14 +26,14 @@ const Navigation = ({ isLoggedIn }) => {
   const onLogInClick = () => {
     navigate("/login");
   };
-  const onHomeClick = () => {
-    navigate("/");
+  const onSearchClick = () => {
+    navigate("/search");
   };
-  const onLecturesClick = () => {
-    navigate("/lecture");
+  const onMineClick = () => {
+    navigate("/Mine");
   };
-  const onProfileClick = () => {
-    navigate("/profile");
+  const onSettingClick = () => {
+    navigate("/setting");
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -55,14 +52,14 @@ const Navigation = ({ isLoggedIn }) => {
       </AppBar>
       <Grid container>
           <ButtonGroup variant="text" aria-label="text button group">
-            <Button variant="contained" onClick={onHomeClick}>
-              Home
+            <Button variant="contained" onClick={onSearchClick}>
+              Search
             </Button>
-            <Button variant="contained" onClick={onLecturesClick}>
-              lectures
+            <Button variant="contained" onClick={onMineClick}>
+              Mine
             </Button>
-            <Button variant="contained" onClick={onProfileClick}>
-              Profile
+            <Button variant="contained" onClick={onSettingClick}>
+              Setting
             </Button>
           </ButtonGroup>
       </Grid>

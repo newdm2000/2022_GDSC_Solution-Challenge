@@ -10,6 +10,9 @@ import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 import Navigation from "./Navigation";
 import Paper from "@mui/material/Paper";
+import Search from "./Banner/Search";
+import Mine from "./Banner/Mine";
+import Setting from "./Banner/Setting";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -28,6 +31,9 @@ const AppRouter = ({ isLoggedIn }) => {
           >
             <Navigation isLoggedIn={isLoggedIn} />
             <Routes>
+              <Route path="/search" element={<Search />} />
+              <Route path="/mine" element={<Mine />} />
+              <Route path="/setting" element={<Setting />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/lecture" element={<Lecture />} />
@@ -36,6 +42,9 @@ const AppRouter = ({ isLoggedIn }) => {
           </Grid>
           <Grid item xs={false} sm={4} md={9}>
             <Routes>
+              <Route path="/search" element={<Search />} />
+              <Route path="/mine" element={<Mine />} />
+              <Route path="/setting" element={<Setting />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/lecture" element={<Lecture />} />
               <Route path="/login" element={<LoginPage />} />
