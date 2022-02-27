@@ -49,9 +49,7 @@ const RegisterPage = () => {
     event.preventDefault();
     try {
       if (password === confirmPassword) {
-        console.log("A");
         await createUserWithEmailAndPassword(auth, email, password);
-        console.log("B");
         await addDoc(collection(db, "Users"), {
           uid: authService.currentUser.uid,
           firstname: firstName,

@@ -30,7 +30,7 @@ const Navigation = ({ isLoggedIn }) => {
     navigate("/search");
   };
   const onMineClick = () => {
-    navigate("/Mine");
+    navigate("/mine");
   };
   const onSettingClick = () => {
     navigate("/setting");

@@ -150,7 +150,6 @@ function LoginPage() {
           </Grid>
           <Grid item>
             <Button
-            fontsize
               sx={{ mt: 3, mb: 2, ml: 1, fontSize:12}}
               variant="outlined"
               onClick={onSocialClick}
