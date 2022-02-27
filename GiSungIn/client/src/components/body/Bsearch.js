@@ -39,7 +39,14 @@ function Bsearch() {
   const auth = authService;
   const [userObj, setUserObj] = useState("");
 
-  return <LectureCard lectureId={lid} />;
+  return (
+    <Grid container>
+        <Grid item></Grid>
+      <Grid item>
+        <LectureCard lectureId={lid} />
+      </Grid>
+    </Grid>
+  );
 }
 
 export default Bsearch;
