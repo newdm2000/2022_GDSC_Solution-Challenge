@@ -46,7 +46,7 @@ const AppRouter = ({ isLoggedIn }) => {
             <Routes>
               <Route path="/" element={<div>hi</div>} />
               <Route path="/search/:key" element={<Bsearch />} />
-              <Route path="/mine" element={<Mine />} />
+              <Route path="/mine/*" element={<Mine />} />
               <Route path="/setting" element={<Setting />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/lecture/:key" element={<Lecture />} />

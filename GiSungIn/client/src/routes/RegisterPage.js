@@ -1,7 +1,7 @@
 import { authService, dbService } from "fbase";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc, } from "firebase/firestore";
 import {
   Container,
   Box,
@@ -50,7 +50,7 @@ const RegisterPage = () => {
     try {
       if (password === confirmPassword) {
         await createUserWithEmailAndPassword(auth, email, password);
-        await addDoc(collection(db, "Users"), {
+        await setDoc(doc(dbService,"Users", authService.currentUser.uid), {
           uid: authService.currentUser.uid,
           firstname: firstName,
           lastname: lastName,
