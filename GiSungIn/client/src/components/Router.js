@@ -15,7 +15,7 @@ import Mine from "./Banner/Mine";
 import Setting from "./Banner/Setting";
 import Bsearch from "./body/Bsearch";
 import BMine from "./body/BMine";
-import Admin from "./Admin";
+import Admin from "./Admin/Admin";
 
 const AppRouter = ({ isLoggedIn, isAdmin }) => {
   return (
