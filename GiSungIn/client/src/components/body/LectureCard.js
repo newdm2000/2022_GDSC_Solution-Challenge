@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { doc, getDoc, getFirestore, query, where } from "firebase/firestore";
 import { dbService } from "fbase";
-import { Grid, Link, Paper } from "@mui/material";
+import { Box, Grid, Link } from "@mui/material";
 
 const LectureCard = ({ lectureId }) => {
   useEffect(async () => {
@@ -25,11 +25,11 @@ const LectureCard = ({ lectureId }) => {
   };
   return (
     <>
-      <Grid container>
+      <Grid container sx = {{border : "solid 1px", width : "400px", p : "20px", height : "auto"}}>
         <Grid item xs={12}>
           <img src={""} alt={`${lectureObj.lecBrand}`} />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12}  sx = {{textAlign:"center"}}>
           <h2>{lectureObj.lecName}</h2>
         </Grid>
         <Grid item xs={12}>
@@ -42,18 +42,23 @@ const LectureCard = ({ lectureId }) => {
           <h4>가격 : {lectureObj.lecPrice}</h4>
           <h4>최저가 : </h4>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} display="flex"
+                    alignItems="flex-start"
+                    flexDirection="row"
+                    flexWrap = "wrap">
           {lectureObj &&
             lectureObj.lecField.map((lid, index) => (
-              <Grid item xs={1}>
-                <div key={index}>
-                  <Paper
-                    xs={{
-                      textAlign: "center",
-                      color: "theme.pallette.text.primary",
+              <Grid item key = {index}>
+                  <Box
+                    sx={{
+                      border : "solid 2px",
+                      borderRadius : "5px",
+                      mr : "5px",
+                      p : "2px",
                     }}
-                  />
-                </div>
+                  >
+                      {lid}
+                  </Box>
               </Grid>
             ))}
         </Grid>
