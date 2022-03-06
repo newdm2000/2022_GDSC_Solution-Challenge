@@ -1,5 +1,5 @@
 import { Button, Grid } from "@mui/material";
-import LectureCard from "components/LectureCard";
+import LectureCard from "components/body/LectureCard";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { authService, dbService } from "fbase";

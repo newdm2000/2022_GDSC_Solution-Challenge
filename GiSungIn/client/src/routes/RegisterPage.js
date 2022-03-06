@@ -13,6 +13,7 @@ import {
   Button,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const yr = new Date().getFullYear();
@@ -25,7 +26,7 @@ const RegisterPage = () => {
   const [age, setAge] = useState(0);
   const auth = authService;
   const db = dbService;
-
+  const navigate = useNavigate();
   const onChange = (event) => {
     const {
       target: { name, value },
@@ -49,6 +50,7 @@ const RegisterPage = () => {
     event.preventDefault();
     try {
       if (password === confirmPassword) {
+        navigate("/mine");
         await createUserWithEmailAndPassword(auth, email, password);
         await setDoc(doc(dbService,"Users", authService.currentUser.uid), {
           uid: authService.currentUser.uid,
@@ -57,6 +59,8 @@ const RegisterPage = () => {
           email: email,
           age: age,
           lectures: [],
+          isAdmin: false,
+          category: [],
         });
       } else {
         setError("Not Confirm Password");

@@ -6,7 +6,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import BLectureCard from "../body/BLectureCard";
+import BLectureCard from "./BLectureCard";
 import { dbService } from "fbase";
 import { Grid } from "@mui/material";
 

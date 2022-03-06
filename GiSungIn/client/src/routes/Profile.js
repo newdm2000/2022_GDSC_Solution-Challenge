@@ -9,7 +9,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import LectureCard from "components/LectureCard";
+import LectureCard from "components/body/LectureCard";
 
 const Profile = () => {
   useEffect(() => {
