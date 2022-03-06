@@ -6,8 +6,9 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import BLectureCard from "../body/BLectureCard";
+import BLectureCard from "./BLectureCard";
 import { dbService } from "fbase";
+import { Grid } from "@mui/material";
 
 const Mine = () => {
   useEffect(() => {
@@ -38,9 +39,9 @@ const Mine = () => {
             <h4>탐색을 먼저 해주세요</h4>
           :
           userObj.lectures.map((lid, index) => (
-            <div key = {index}>
+            <Grid key = {index}>
               <BLectureCard lectureId={lid} />
-            </div>
+            </Grid>
           ))
         )
       }

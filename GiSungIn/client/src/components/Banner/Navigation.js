@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const Navigation = ({ isLoggedIn }) => {
+const Navigation = ({ isLoggedIn, isAdmin }) => {
   const navigate = useNavigate();
   const onLogOutClick = () => {
     getAuth().signOut();
@@ -35,6 +35,10 @@ const Navigation = ({ isLoggedIn }) => {
   const onSettingClick = () => {
     navigate("/setting");
   };
+  const onAdminClick = () => {
+    navigate("/admin");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -61,6 +65,7 @@ const Navigation = ({ isLoggedIn }) => {
             <Button variant="contained" onClick={onSettingClick}>
               Setting
             </Button>
+            {isAdmin ? (<Button variant="contained" onClick={onAdminClick}>Admin</Button>) : (<></>)}
           </ButtonGroup>
       </Grid>
     </Box>
