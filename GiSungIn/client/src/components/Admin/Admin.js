@@ -1,10 +1,11 @@
 import React from "react";
+import AddLecture from "./AddLecture";
 
 function Admin({ isAdmin }) {
 
     
   if (isAdmin) {
-    return <div></div>;
+    return <AddLecture />;
   } else {
     return <div></div>;
   }
