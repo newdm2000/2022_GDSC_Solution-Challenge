@@ -7,18 +7,21 @@ import {
   collection,
   getDocs,
   doc,
-  getFirestore,
   query,
   where,
   updateDoc,
 } from "firebase/firestore";
 
 function Bsearch() {
-  const leclist = [];
-  const [lid, setLid] = useState("");
-  const { key } = useParams();
-  const navigate = useNavigate();
+  let leclist = [];
+  const [lid, setLid] = useState();
+  const auth = authService;
+  const [userLec, setUserLec] = useState([]);
+  const [num,setNum]= useState(-1);
+  const [trashCan, setTrashCan] = useState([]);
+
   useEffect(async () => {
+    let dummy = [];
     const user = auth.currentUser;
     const userQuery = query(
       collection(dbService, "Users"),
@@ -26,43 +29,58 @@ function Bsearch() {
     );
     const querySnapShot = await getDocs(userQuery);
     querySnapShot.forEach((doc) => {
-      setUserObj(doc.data());
+      setUserLec(doc.data().lectures);
+      dummy = doc.data().lectures;
     });
-
-    const lecturesQuery = await getDocs(collection(dbService, "Lectures"));
-    await lecturesQuery.forEach((doc) => {
-      leclist.push(doc.id);
-    });
-    const randlec = leclist[parseInt(Math.random() * leclist.length)];
-    setLid(randlec);
-    console.log(randlec);
+    setNum(dummy.length);
   }, []);
 
-  const onclickleft = () => {
-    console.log(key);
+  useEffect(async ()=>{
+    const lecturesQuery = await getDocs(collection(dbService, "Lectures"));
+    if(num > -1){
+      lecturesQuery.forEach((doc) => {
+        if(!userLec.includes(doc.id) && !trashCan.includes(doc.id)){
+          leclist.push(doc.id);
+        }
+      });
+      const randlec = leclist[parseInt(Math.random() * leclist.length)];
+      setLid(randlec);
+    }
+  },[num])
+
+  const onclickleft = () => { 
+    const lec = trashCan;  
+    lec.push(lid);
+    setNum(num + 1);
+    setTrashCan(lec);
   };
   const onclickright = async () => {
-    const lec = userObj.lectures;
+    const lec = userLec;  
     lec.push(lid);
-    const user = doc(dbService, "Users", userObj.uid);
-    await updateDoc(user, { lectures: lec });
+    setNum(num + 1);
+    await updateDoc(doc(dbService, "Users", auth.currentUser.uid), { lectures: lec });
   };
 
-  const auth = authService;
-  const [userObj, setUserObj] = useState("");
 
   return (
-    <Grid container>
-      <Grid item>
-        <Button onClick={onclickleft}>left</Button>
+    <>
+    {
+    (num > -1 && !lid) ? <h4>모든 강의를 탐색하셨습니다!</h4> 
+    : (
+        <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "space-between"}}>
+        <Grid item>
+          <Button onClick={onclickleft}>left</Button>
+        </Grid>
+        <Grid item>
+          {lid && <LectureCard lectureId={lid} />}
+        </Grid>
+        <Grid item>
+          <Button onClick={onclickright}>right</Button>
+        </Grid>
       </Grid>
-      <Grid item>
-        <LectureCard lectureId={lid} />
-      </Grid>
-      <Grid item>
-        <Button onClick={onclickright}>right</Button>
-      </Grid>
-    </Grid>
+      )
+    }
+    </>
   );
 }
 
