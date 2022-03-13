@@ -15,7 +15,7 @@ import Mine from "./Banner/Mine";
 import Setting from "./Banner/Setting";
 import Bsearch from "./body/Bsearch";
 import BMine from "./body/BMine";
-import Admin from "./Admin";
+import Admin from "./Admin/Admin";
 
 const AppRouter = ({ isLoggedIn, isAdmin }) => {
   return (
@@ -42,7 +42,7 @@ const AppRouter = ({ isLoggedIn, isAdmin }) => {
               <Route path="/search/:key" element={<Bsearch />} />
               <Route path="/mine" element={<BMine />} />
               <Route path="/mine/:key" element={<BMine />} />
-              <Route path="/setting" element={<Setting />} />
+              <Route path="/setting" element={<></>} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/lecture/:key" element={<Lecture />} />
               <Route path="/login" element={<LoginPage />} />
