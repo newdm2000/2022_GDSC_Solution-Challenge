@@ -54,10 +54,12 @@ function Bsearch() {
     setNum(num + 1);
     setTrashCan(lec);
   };
-  const onclickright = async () => {
-    const lec = userLec;  
-    lec.push(lid);
-    setNum(num + 1);
+  const onclickright = async (lid, e) => {
+    const lec = userLec;
+    if(!lec.includes(lid)){
+      lec.push(lid);
+      setNum(num + 1);
+    }
     await updateDoc(doc(dbService, "Users", auth.currentUser.uid), { lectures: lec });
   };
 
@@ -75,7 +77,7 @@ function Bsearch() {
           {lid && <LectureCard lectureId={lid} />}
         </Grid>
         <Grid item>
-          <Button onClick={onclickright}>right</Button>
+          <Button onClick={(e) => onclickright(lid,e)}>right</Button>
         </Grid>
       </Grid>
       )
