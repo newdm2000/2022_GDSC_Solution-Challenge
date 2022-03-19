@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -16,8 +16,19 @@ import {
   Grid,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { dbService } from "fbase";
 
 const Navigation = ({ isLoggedIn, isAdmin }) => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const [userObjName, setUserObjName] = useState("");
+  useEffect(async () => {
+    const docRef = doc(dbService, "Users", user.uid);
+    const docSnap = await getDoc(docRef);
+    setUserObjName(docSnap.data().lastname + docSnap.data().firstname);
+  }, []);
+
   const navigate = useNavigate();
   const onLogOutClick = () => {
     getAuth().signOut();
@@ -42,7 +53,8 @@ const Navigation = ({ isLoggedIn, isAdmin }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar disableGutters sx= {{display : "flex", justifyContent : "flex-end", mr : "8px"}}>
+        <Toolbar disableGutters sx= {{display : "flex", justifyContent : "space-between", mr : "8px"}}>
+        <h4>{userObjName}님 환영합니다!</h4>
         {isLoggedIn ? (
             <Button variant="outlined" color="secondary" onClick={onLogOutClick}>
               LogOut
