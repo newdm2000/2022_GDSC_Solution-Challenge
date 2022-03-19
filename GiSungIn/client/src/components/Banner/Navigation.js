@@ -15,7 +15,7 @@ import {
   ButtonGroup,
   Grid,
 } from "@mui/material";
- import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { dbService } from "fbase";
 
