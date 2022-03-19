@@ -16,6 +16,12 @@ import Setting from "./Banner/Setting";
 import Bsearch from "./body/Bsearch";
 import BMine from "./body/BMine";
 import Admin from "./Admin/Admin";
+import styled from "@emotion/styled";
+import { grey } from '@mui/material/colors';
+
+const RootGrid = styled(Grid)({
+  background : grey[300],
+});
 
 const AppRouter = ({ isLoggedIn, isAdmin }) => {
   return (
@@ -23,7 +29,7 @@ const AppRouter = ({ isLoggedIn, isAdmin }) => {
       <CssBaseline />
       {isLoggedIn ? (
         <Grid container component="main" sx={{ height: "100vh" }}>
-          <Grid item xs={12} sm={4} md={3} component={Paper} square>
+          <RootGrid item xs={12} sm={4} md={3} component={Paper} square>
             <Navigation isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
             <Routes>
               <Route path="/" element={<div>hi</div>} />
@@ -36,8 +42,8 @@ const AppRouter = ({ isLoggedIn, isAdmin }) => {
               <Route path="/lecture/*" element={<Lecture />} />
               <Route path="/register" element={<RegisterPage />} />
             </Routes>
-          </Grid>
-          <Grid item xs={false} sm={4} md={9}>
+          </RootGrid>
+          <RootGrid item xs={false} sm={4} md={9} sx = {{border : "solid 1px", display : "flex", alignItems : "center" }}>
             <Routes>
               <Route path="/" element={<div>hi</div>} />
               <Route path="/search/:key" element={<Bsearch />} />
@@ -53,7 +59,7 @@ const AppRouter = ({ isLoggedIn, isAdmin }) => {
                 element={<Admin isAdmin={isAdmin}></Admin>}
               />
             </Routes>
-          </Grid>
+          </RootGrid>
         </Grid>
       ) : (
         <Routes>

@@ -5,7 +5,12 @@ import { Box, Button, Grid, IconButton } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import DeleteIcon from '@mui/icons-material/Delete';
+import styled from "@emotion/styled";
+import { grey } from '@mui/material/colors';
 
+const LectureGrid = styled(Grid)({
+  background : grey[100],
+});
 
 const BLectureCard = ({ lectureId }) => {
   const { key } = useParams();
@@ -38,8 +43,8 @@ const BLectureCard = ({ lectureId }) => {
     alignItems: "flex-start",
     flexWrap: "wrap",
     position: "relative",
-    marginBottom: "20px",
     width: "100%",
+    background : grey[100],
   };
   const onClickButton = ()=>{
     navigate(`/mine/${lectureId}`);
@@ -65,8 +70,9 @@ const BLectureCard = ({ lectureId }) => {
           display: "flex",
           flexWrap: "nowrap",
           width: 1,
-          borderBottom: "solid",
+          borderBottom: "solid 1px",
           height: "100px",
+          mt : "20px",
         }}
       >
         <Grid container 

@@ -3,14 +3,8 @@ import LectureCard from "components/body/LectureCard";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { authService, dbService } from "fbase";
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import DeleteIcon from '@mui/icons-material/Delete';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
-import ClearIcon from '@mui/icons-material/Clear';
-import {
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';import {
   collection,
   getDocs,
   doc,
@@ -87,7 +81,7 @@ function Bsearch() {
         </Grid>
         <Grid item>
           <Button variant="contained" onClick={(e) => onclickright(lid,e)}>
-            <AddRoundedIcon />
+            <CheckRoundedIcon />
           </Button>
         </Grid>
       </Grid>
