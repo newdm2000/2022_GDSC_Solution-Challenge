@@ -17,7 +17,7 @@ const LectureCard = ({ lectureId }) => {
   const [lectureObj, setLectureObj] = useState("");
   return (
     <>
-      <Grid container sx = {{border : "solid 1px", width : "400px", p : "20px", height : "auto"}}>
+      <Grid container sx = {{border : "solid 1px", width : "400px", p : "20px", height : "0.9"}}>
         <Grid item xs={12}>
           <img src={""} alt={`${lectureObj.lecBrand}`} />
         </Grid>

@@ -38,14 +38,16 @@ function BMine() {
   }
   return (
     (key)?(
-    <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "center", alignItems : "center",
-    }}>
-      <Grid item>
+    <Grid container 
+    sx = {{height : 1, display : "flex", justifyContent : "center", alignItems : "center",}}>
+      <Grid item sx = {{display : "flex", flexDirection : "column", justifyContent : "center", alignItems : "center",  height : 1}}>
         <LectureCard lectureId={key} />
+        <Grid item sx = {{width : 1, display : "flex", justifyContent: "flex-end"}}>
+          <Button variant="contained" onClick = {onClickButton}>
+            <DeleteIcon />
+          </Button>
+        </Grid>
       </Grid>
-      <Button variant="contained" onClick = {onClickButton} sx = {{display : "flex", alignItems : "flex-end", }}>
-        <DeleteIcon />
-      </Button>
     </Grid>
     )
     :

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDoc, query, where, doc, updateDoc, getDocs } from "firebase/firestore";
 import { dbService } from "fbase";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, Grid, IconButton } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAuth } from "firebase/auth";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const BLectureCard = ({ lectureId }) => {
   const { key } = useParams();
@@ -61,7 +63,7 @@ const BLectureCard = ({ lectureId }) => {
       <Box
         sx={{
           display: "flex",
-          flexWrap: "wrap",
+          flexWrap: "nowrap",
           width: 1,
           borderBottom: "solid",
           height: "100px",
@@ -92,9 +94,9 @@ const BLectureCard = ({ lectureId }) => {
                 </Box>
           </Box>
         </Grid>
-        {(key === lectureId) && <Button onClick = {onClickDeleteButton} variant="contained" sx = {{display : "flex", alignItems : "flex-end", p:0, width : 0.1}}>  
-          X
-        </Button>
+        {(key === lectureId) && <IconButton aria-label="delete" onClick = {onClickDeleteButton} sx = {{display : "flex", alignItems : "center", p:0}}>  
+          <DeleteIcon fontSize = "small" />
+        </IconButton>
         }
       </Box>
     </div>
