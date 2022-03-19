@@ -28,7 +28,8 @@ const AppRouter = ({ isLoggedIn, isAdmin }) => {
             <Routes>
               <Route path="/" element={<div>hi</div>} />
               <Route path="/search/*" element={<Search />} />
-              <Route path="/mine/*" element={<Mine />} />
+              <Route path="/mine" element={<Mine />} />
+              <Route path="/mine/:key" element={<Mine />} />
               <Route path="/setting" element={<Setting />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/profile" element={<Profile />} />

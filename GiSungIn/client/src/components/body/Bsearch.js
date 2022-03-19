@@ -3,6 +3,13 @@ import LectureCard from "components/body/LectureCard";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { authService, dbService } from "fbase";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import DeleteIcon from '@mui/icons-material/Delete';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import ClearIcon from '@mui/icons-material/Clear';
 import {
   collection,
   getDocs,
@@ -69,15 +76,19 @@ function Bsearch() {
     {
     (num > -1 && !lid) ? <h4>모든 강의를 탐색하셨습니다!</h4> 
     : (
-        <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "space-between"}}>
+        <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "center", alignItems : "center"}}>
         <Grid item>
-          <Button onClick={onclickleft}>left</Button>
+          <Button variant="contained" onClick={onclickleft} >
+            <ClearRoundedIcon />
+          </Button>
         </Grid>
         <Grid item>
           {lid && <LectureCard lectureId={lid} />}
         </Grid>
         <Grid item>
-          <Button onClick={(e) => onclickright(lid,e)}>right</Button>
+          <Button variant="contained" onClick={(e) => onclickright(lid,e)}>
+            <AddRoundedIcon />
+          </Button>
         </Grid>
       </Grid>
       )

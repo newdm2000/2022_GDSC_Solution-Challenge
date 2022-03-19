@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDoc, query, where, doc, updateDoc, getDocs } from "firebase/firestore";
 import { dbService } from "fbase";
-import { Box, Grid } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Box, Button, Grid } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 
 const BLectureCard = ({ lectureId }) => {
+  const { key } = useParams();
   const navigate = useNavigate();
   const [userObj, setUserObj] = useState("");
   const auth = getAuth();
@@ -38,7 +39,10 @@ const BLectureCard = ({ lectureId }) => {
     marginBottom: "20px",
     width: "100%",
   };
-  const onClickButton = async (event) => {
+  const onClickButton = ()=>{
+    navigate(`/mine/${lectureId}`);
+  }
+  const onClickDeleteButton = async (event) => {
     const lec = userObj.lectures;
     for(let i = 0; i<lec.length; i++){
       if(lec[i] === lectureId){
@@ -49,15 +53,12 @@ const BLectureCard = ({ lectureId }) => {
     const user = doc(dbService, "Users", auth.currentUser.uid);
     await updateDoc(user, {lectures : lec});
     navigate("/mine");
+    
   }
   return (
     <div className="container" style={tempStyle}>
       {/* <Box onClick = {()=>{console.log({lectureId})}} */}
       <Box
-        onClick={() => {
-          console.log(lectureId);
-          navigate(`/mine/${lectureId}`);
-        }}
         sx={{
           display: "flex",
           flexWrap: "wrap",
@@ -66,7 +67,10 @@ const BLectureCard = ({ lectureId }) => {
           height: "100px",
         }}
       >
-        <Grid container sx={{width: 1, height: 1 }}>
+        <Grid container 
+          onClick={onClickButton}
+        sx={{width: 0.9, height: 1 }}>
+
           <Box
             component="img"
             sx={{
@@ -76,7 +80,7 @@ const BLectureCard = ({ lectureId }) => {
             alt="No Image Exist"
             src={lectureObj.img_url}
           />
-          <Box sx = {{height : 1, width : 0.6}}>
+          <Box sx = {{height : 1, width : 0.7}}>
               <Box sx = {{fontSize : "1.0em",height : "50px", m:0}}>{lectureObj.lecName}</Box>
                 <Box sx = {{height : "50px"}}>
                   {lectureObj.lecField &&
@@ -87,10 +91,11 @@ const BLectureCard = ({ lectureId }) => {
                       ))}
                 </Box>
           </Box>
-          <Box onClick = {onClickButton} variant="outlined" sx = {{border : "solid", display : "flex", alignItems : "flex-end", p:0, width : 0.1}}>  
-            X
-          </Box>
         </Grid>
+        {(key === lectureId) && <Button onClick = {onClickDeleteButton} variant="contained" sx = {{display : "flex", alignItems : "flex-end", p:0, width : 0.1}}>  
+          X
+        </Button>
+        }
       </Box>
     </div>
   );
