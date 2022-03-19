@@ -42,7 +42,7 @@ const Navigation = ({ isLoggedIn, isAdmin }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx= {{display : "flex", justifyContent : "flex-end", mr : "8px"}}>
         {isLoggedIn ? (
             <Button variant="outlined" color="secondary" onClick={onLogOutClick}>
               LogOut
@@ -55,17 +55,19 @@ const Navigation = ({ isLoggedIn, isAdmin }) => {
         </Toolbar>
       </AppBar>
       <Grid container>
-          <ButtonGroup variant="text" aria-label="text button group">
-            <Button variant="contained" onClick={onSearchClick}>
-              Search
-            </Button>
-            <Button variant="contained" onClick={onMineClick}>
-              Mine
-            </Button>
-            <Button variant="contained" onClick={onSettingClick}>
-              Setting
-            </Button>
-            {isAdmin ? (<Button variant="contained" onClick={onAdminClick}>Admin</Button>) : (<></>)}
+          <ButtonGroup variant="text" aria-label="text button group" sx = {{mt : "3px", width : 1}}>
+            <Grid sx = {{width : 1, display : "flex", flexWrap : "wrap"}}>
+              <Button variant="contained" onClick={onSearchClick} sx = {{flex : "1 1 30%"}}>
+                Search
+              </Button>
+              <Button variant="contained" onClick={onMineClick} sx = {{flex : "1 1 30%"}}>
+                Mine
+              </Button>
+              <Button variant="contained" onClick={onSettingClick} sx = {{flex : "1 1 30%"}}>
+                Setting
+              </Button>
+            {isAdmin ? (<Button variant="contained" onClick={onAdminClick} sx = {{flex : "1 1 30%"}}>Admin</Button>) : (<></>)}
+            </Grid>
           </ButtonGroup>
       </Grid>
     </Box>

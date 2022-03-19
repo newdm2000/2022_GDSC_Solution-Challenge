@@ -9,13 +9,16 @@ import {
 import BLectureCard from "./BLectureCard";
 import { dbService } from "fbase";
 import { Grid } from "@mui/material";
+import { useParams } from "react-router-dom";
+
 
 const Mine = () => {
+  let { key } = useParams();
   const auth = getAuth();
   const [userObj, setUserObj] = useState("");
   useEffect(async() => {
     refresh();
-  }, [userObj.lectures]);
+  }, [userObj.lectures,key]);
 
   const refresh = async () => {
     const user = auth.currentUser;

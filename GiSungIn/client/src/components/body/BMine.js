@@ -3,6 +3,7 @@ import LectureCard from "components/body/LectureCard";
 import { dbService } from "fbase";
 import { getAuth } from "firebase/auth";
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -37,17 +38,27 @@ function BMine() {
   }
   return (
     (key)?(
-    <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "center"}}>
-      <Grid item>
+    <Grid container 
+    sx = {{height : 1, display : "flex", justifyContent : "center", alignItems : "center",}}>
+      <Grid item sx = {{display : "flex", flexDirection : "column", justifyContent : "center", alignItems : "center",  height : 1}}>
         <LectureCard lectureId={key} />
+        <Grid item sx = {{width : 1, display : "flex", justifyContent: "flex-end"}}>
+          <Button variant="contained" onClick = {onClickButton}>
+            <DeleteIcon />
+          </Button>
+        </Grid>
       </Grid>
-      <Button onClick = {onClickButton} sx = {{alignItems : "flex-end", }}>
-            X
-      </Button>
     </Grid>
     )
     :
     (
+      userObj && userObj.lectures.length === 0 ? 
+        <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "center"}}>
+        <h1>
+          탐색을 먼저 해주세요
+        </h1>
+      </Grid>
+        :
       <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "center"}}>
         <h1>
           배너에서 항목을 눌러주세요.
