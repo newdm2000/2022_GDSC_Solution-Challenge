@@ -10,9 +10,10 @@ import { dbService } from "fbase";
 
 const theme = createTheme({
   palette: {
+    type : 'dark',
     primary: {
       light: "#757ce8",
-      main: "#3f50b5",
+      main: '#202020',
       dark: "#002884",
       contrastText: "#fff",
     },
@@ -21,6 +22,10 @@ const theme = createTheme({
       main: "#f44336",
       dark: "#ba000d",
       contrastText: "#000",
+    },
+    settings: {
+      main : "#eeeeee",
+      dark : "#eeeeee",
     },
   },
 });

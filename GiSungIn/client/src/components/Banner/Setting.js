@@ -6,6 +6,7 @@ import { dbService } from "fbase";
 import { Button, Grid } from "@mui/material";
 import { async } from "@firebase/util";
 import { category_list } from "data";
+import { grey } from '@mui/material/colors';
 
 function Setting() {
   const auth = getAuth();
@@ -56,7 +57,8 @@ function Setting() {
       <Button
         name={category}
         key={index}
-        variant="outlined"
+        variant="contained"
+        color = "settings"
         sx={{ m: "10px" }}
         onClick={onClickPush}
       >
