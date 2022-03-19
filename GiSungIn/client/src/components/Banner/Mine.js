@@ -11,12 +11,11 @@ import { dbService } from "fbase";
 import { Grid } from "@mui/material";
 
 const Mine = () => {
-  useEffect(() => {
-    refresh();
-  }, []);
-
   const auth = getAuth();
   const [userObj, setUserObj] = useState("");
+  useEffect(async() => {
+    refresh();
+  }, [userObj.lectures]);
 
   const refresh = async () => {
     const user = auth.currentUser;
@@ -28,7 +27,6 @@ const Mine = () => {
     querySnapShot.forEach((doc) => {
       setUserObj(doc.data());
     });
-    console.log(userObj);
   };
 
   return (

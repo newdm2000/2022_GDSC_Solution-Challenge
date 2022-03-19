@@ -5,20 +5,7 @@ import BLectureCard from "./BLectureCard";
 import { dbService } from "fbase";
 import { Button, Grid } from "@mui/material";
 import { async } from "@firebase/util";
-
-const category_list = [
-  "JavaScipt",
-  "C++",
-  "SQL",
-  "Python",
-  "React-Native",
-  "Vue.js",
-  "React",
-  "R",
-  "Pytorch",
-  "Keras",
-  "Tensorflow",
-];
+import { category_list } from "data";
 
 function Setting() {
   const auth = getAuth();

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { doc, getDoc, getFirestore, query, where } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { dbService } from "fbase";
 import { Box, Grid, Link } from "@mui/material";
+import { getAuth } from "firebase/auth";
 
 const LectureCard = ({ lectureId }) => {
+  const auth = getAuth();
   useEffect(async () => {
     if (lectureId) {
       const docRef = doc(dbService, "Lectures", lectureId);
@@ -11,18 +13,8 @@ const LectureCard = ({ lectureId }) => {
       setLectureObj(docSnap.data());
     }
   }, [lectureId]);
+  const [userObj, setUserObj] = useState("");
   const [lectureObj, setLectureObj] = useState("");
-
-  const tempStyle = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    flexWrap: "wrap",
-    position: "relative",
-    marginBottom: "20px",
-    width: "100%",
-  };
   return (
     <>
       <Grid container sx = {{border : "solid 1px", width : "400px", p : "20px", height : "auto"}}>
