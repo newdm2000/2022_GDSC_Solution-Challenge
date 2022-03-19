@@ -86,7 +86,7 @@ const BLectureCard = ({ lectureId }) => {
               width: 0.3,
             }}
             alt="No Image Exist"
-            src={lectureObj.img_url}
+            src={lectureObj.lecImg}
           />
           <Box sx = {{height : 1, width : 0.7}}>
               <Box sx = {{fontSize : "1.0em",height : "50px", m:0}}>{lectureObj.lecName}</Box>
