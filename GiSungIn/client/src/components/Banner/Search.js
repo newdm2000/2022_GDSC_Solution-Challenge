@@ -13,8 +13,8 @@ function Search() {
     else if(name ==="recruit") navigate("/search/recruit");
   };
   return (
-    <Box>
-      <Button name="develop" onClick={onClick}>
+    <Box sx = {{display : "flex"}}>
+      <Button name="develop" onClick={onClick}  sx = {{flex : "1 1", fontSize:'23px'}} >
         개발 강의 탐색
       </Button>
       {/* <Button name="bootcamp" onClick={onClick}>

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function AddLecture() {
   const [lecBrand, setLecBrand] = useState("");
+  const [lecDescription, setLecDescription] = useState("")
   const [lecName, setLecName] = useState("");
   const [lecImg, setLecImg] = useState("");
   const [lecUrl, setLecUrl] = useState("");
@@ -67,7 +68,7 @@ function AddLecture() {
   };
 
   return (
-    <Box component="form" noValidate sx={{ mt: 1 }}>
+    <Box component="form" noValidate sx={{ml:1, mt: 1, width:0.7}}>
       <TextField
         margin="normal"
         type="text"

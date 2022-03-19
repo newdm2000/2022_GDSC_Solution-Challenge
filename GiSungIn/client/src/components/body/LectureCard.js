@@ -3,7 +3,11 @@ import { doc, getDoc } from "firebase/firestore";
 import { dbService } from "fbase";
 import { Box, Grid, Link } from "@mui/material";
 import { getAuth } from "firebase/auth";
-
+import styled from "@emotion/styled";
+import { grey } from '@mui/material/colors';
+const BLectureGrid = styled(Grid)({
+  background : grey[100],
+});
 const LectureCard = ({ lectureId }) => {
   const auth = getAuth();
   useEffect(async () => {
@@ -33,8 +37,7 @@ const LectureCard = ({ lectureId }) => {
         <Grid item xs={12} sx = {{height : 0.3}}>
           <h5>수강기간 : </h5>
           <h5>시간 : </h5>
-          <h5>가격 : {lectureObj.lecPrice}</h5>
-          <h5>최저가 : </h5>
+          <h5>가격 : {lectureObj.lecPrice} 원</h5>
         </Grid>
         <Grid item sx = {{height : 0.15}}>
           <Grid item xs={12} display="flex"
@@ -58,7 +61,7 @@ const LectureCard = ({ lectureId }) => {
               ))}
           </Grid>
           <Grid item xs={12}>
-            <Link to={lectureObj.lecUrl}>링크~</Link>
+            <Link href={lectureObj.lecUrl}>링크~</Link>
           </Grid>
         </Grid>
       </Grid>
