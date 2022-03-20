@@ -3,10 +3,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const sections = [
-  { title: "GiSungIn", url: "#" },
-  { title: "소개", url: "#" },
-  { title: "서비스", url: "#" },
-  { title: "다운로드", url: "#" },
+  { title: "GiSungIn", url: "#" }
 ];
 
 function Header() {

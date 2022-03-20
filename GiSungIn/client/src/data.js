@@ -1,5 +1,5 @@
 export const category_list = [
-  "JavaScipt",
+  "JavaScript",
   "C++",
   "SQL",
   "Python",
@@ -11,4 +11,10 @@ export const category_list = [
   "Keras",
   "Tensorflow",
   "Youtube",
+  "Java",
+  "Html",
+  "Css",
+  "Nodejs",
+  "express",
+  "MongoDB",
 ];

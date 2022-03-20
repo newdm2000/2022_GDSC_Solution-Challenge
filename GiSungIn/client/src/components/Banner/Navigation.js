@@ -54,7 +54,7 @@ const Navigation = ({ isLoggedIn, isAdmin }) => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar disableGutters sx= {{display : "flex", justifyContent : "space-between", mr : "8px"}}>
-        <h4>{userObjName}님 환영합니다!</h4>
+        <Typography variant="body1" sx={{ml:"5px"}}>{userObjName}님 환영합니다!</Typography>
         {isLoggedIn ? (
             <Button variant="outlined" color="secondary" onClick={onLogOutClick}>
               LogOut
