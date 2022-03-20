@@ -32,7 +32,7 @@ const AppRouter = ({ isLoggedIn, isAdmin }) => {
           <RootGrid item xs={12} sm={4} md={3} component={Paper} square>
             <Navigation isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
             <Routes>
-              <Route path="/" element={<div>hi</div>} />
+              <Route path="/" element={<></>} />
               <Route path="/search/*" element={<Search />} />
               <Route path="/mine" element={<Mine />} />
               <Route path="/mine/:key" element={<Mine />} />
@@ -45,7 +45,7 @@ const AppRouter = ({ isLoggedIn, isAdmin }) => {
           </RootGrid>
           <RootGrid item xs={false} sm={4} md={9} sx = {{border : "solid 1px", display : "flex", alignItems : "center" }}>
             <Routes>
-              <Route path="/" element={<div>hi</div>} />
+              <Route path="/" element={<Home/>} />
               <Route path="/search/:key" element={<Bsearch />} />
               <Route path="/mine" element={<BMine />} />
               <Route path="/mine/:key" element={<BMine />} />
