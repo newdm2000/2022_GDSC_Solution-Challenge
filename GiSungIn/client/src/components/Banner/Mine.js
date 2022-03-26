@@ -11,7 +11,6 @@ import { dbService } from "fbase";
 import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-
 const Mine = () => {
   let { key } = useParams();
   const auth = getAuth();
@@ -37,7 +36,10 @@ const Mine = () => {
       {
         userObj && (
           userObj.lectures.length === 0 ? 
-            <h4>탐색을 먼저 해주세요</h4>
+          <>
+            <img src = "https://cdn-icons.flaticon.com/png/512/3193/premium/3193785.png?token=exp=1648287985~hmac=5851691fb0f6a4638749f3e13baf376d" weight = "50px" height = "50px" style={{marginLeft : "40px",}}/>
+            <h4>Please Search the Lectures at the "Search" Menu!</h4>
+          </>
           :
           userObj.lectures.map((lid, index) => (
             <Grid key = {index}>

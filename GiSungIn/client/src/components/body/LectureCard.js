@@ -21,7 +21,7 @@ const LectureCard = ({ lectureId }) => {
   const [lectureObj, setLectureObj] = useState("");
   return (
     <>
-      <BLectureGrid container sx = {{border : "solid 1px", display : "flex", alignContent:"center" ,width : "450px", p : "20px", height : "0.7"}}>
+      <BLectureGrid container sx = {{border : "solid 1px", display : "flex", alignContent:"center" ,width : "450px", p : "20px", height : "0.9"}}>
         <Grid item sx = {{height : 0.55}}>
           <Box item xs={12} sx = {{display : "flex",
             justifyContent: "flex-start",
@@ -80,7 +80,7 @@ const LectureCard = ({ lectureId }) => {
               ))}
           </Grid>
           <Grid item sx={{mt:"5px"}}>
-            <Link href={lectureObj.lecUrl}>링크~</Link>
+            <Link href={lectureObj.lecUrl}>Link</Link>
           </Grid>
         </Grid>
       </BLectureGrid>
