@@ -66,8 +66,11 @@ REACT_APP_STORAGE_BUCKET=.....
 REACT_APP_MESSAGE_SENDER_ID=.....
 REACT_APP_APP_ID=.....
 ```
-•Please contect our email newdm2000@gmail.com or github for connect out firebase CLI key.      
-4. npm start
+•For connect our firebase CLI key, Please contect our email newdm2000@gmail.com or github.      
+4. Excute dev version
+```
+$npm start
+```
 ### For deploy
 1. build and deploy
 ```
