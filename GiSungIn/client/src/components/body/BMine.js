@@ -6,7 +6,8 @@ import { collection, doc, getDocs, query, updateDoc, where } from "firebase/fire
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import TouchAppOutlinedIcon from '@mui/icons-material/TouchAppOutlined';
+import WestTwoToneIcon from '@mui/icons-material/WestTwoTone';
 
 function BMine() {
   const { key } = useParams();
@@ -57,14 +58,13 @@ function BMine() {
         <h1>
           Please Search the Lectures on the "Search" Menu!
         </h1>
-        <img src = "https://cdn-icons.flaticon.com/png/512/1481/premium/1481058.png?token=exp=1648287862~hmac=a2f3224e43c0955c30a8471fa55e8a6c" width = {100} height = {100}/>
+        <p><TouchAppOutlinedIcon fontSize = "large" /></p>
       </Grid>
         :
       <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "center"}}>
-        <img src = "https://cdn-icons-png.flaticon.com/512/545/545680.png" width = {150} height = {150}/>
+        <p><WestTwoToneIcon fontSize = "large" /></p>
         <h1>
-          <p></p>
-          Please Click the Lecture on the banner!
+          　Please Click the Lecture on the banner!
         </h1>
       </Grid>
     )

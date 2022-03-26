@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { authService, dbService } from "fbase";
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';import {
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
+import ReportGmailerrorredTwoToneIcon from '@mui/icons-material/ReportGmailerrorredTwoTone';import {
   collection,
   getDocs,
   doc,
@@ -68,7 +69,12 @@ function Bsearch() {
   return (
     <>
     {
-    (num > -1 && !lid) ? <h4>You've Searched All Lectures that we Prepared. Please Refresh Page!</h4> 
+    (num > -1 && !lid) ? 
+    <>
+      <ReportGmailerrorredTwoToneIcon fontSize = "large"/>
+      <h4>You've Searched All Lectures that we Prepared. Please Refresh Page!</h4>
+      <ReportGmailerrorredTwoToneIcon fontSize = "large"/>
+    </>
     : (
         <Grid container sx = {{height : 1, display : "flex", flexDirection : "row", justifyContent : "space-evenly", alignItems : "center"}}>
         <Grid item>
