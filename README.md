@@ -47,7 +47,35 @@ We are provided multiple functional tools which include Backend, DataBase, Hosti
 • FireStore     
 
 ## Guide to Execution
-동민아~부탁해
+### For development
+1. install Node.js and npm
+2. install package
+'''
+$git clone https://github.com/newdm2000/2022_GDSC_Solution-Challenge.git
+$cd 2022_GDSC_Solution-Challenge/GiSungIn/client
+$npm install
+'''
+3. connect firebase
+• Create an .env file in the 2022_GDSC_Solution-Challenge/GiSungIn/client path.
+• Please put the firebase CLI in the form below in ......
+'''
+REACT_APP_API_KEY=.....
+REACT_APP_AUTH_DOMAIN=.....
+REACT_APP_PROJECT_ID=.....
+REACT_APP_STORAGE_BUCKET=.....
+REACT_APP_MESSAGE_SENDER_ID=.....
+REACT_APP_APP_ID=.....
+'''
+•Please contect our email newdm2000@gmail.com or github for connect out firebase CLI key.
+4. npm start
+### For deploy
+1. build and deploy
+'''
+$cd 2022_GDSC_Solution-Challenge/GiSungIn/client
+$npm build
+$firebase deploy
+'''
+
 
 ## Design
 #### 1st Draft 
