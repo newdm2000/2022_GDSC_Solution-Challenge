@@ -36,7 +36,7 @@ function Header() {
           color="primary"
           size="small"
         >
-          로그인
+          Log In
         </Button>
       </Toolbar>
     </Container>

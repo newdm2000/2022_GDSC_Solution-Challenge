@@ -137,7 +137,7 @@ function LoginPage() {
           </Button>
           {error}
         </Box>
-        <Grid container>
+        {/* <Grid container>
           <Grid item xs>
             <Button
               sx={{ mt: 3, mb: 2, mr: 1, fontSize:12 }}
@@ -158,7 +158,7 @@ function LoginPage() {
               Continue with Github
             </Button>
           </Grid>
-        </Grid>
+        </Grid> */}
       </Box>
     </Container>
   );

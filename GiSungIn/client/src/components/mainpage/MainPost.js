@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "components/mainpage/Header";
 
 const mainpost = {
-  title: "나를 위한 개발 강의 찾기",
+  title: "Find the skills for me",
   image: "https://source.unsplash.com/random",
   imageText: "main image description",
 };
@@ -76,7 +76,7 @@ const MainPost = () => {
             color="primary"
             size="large"
           >
-            계정 만들기
+            Sign Up
           </Button>
         </Box>
       </Paper>
