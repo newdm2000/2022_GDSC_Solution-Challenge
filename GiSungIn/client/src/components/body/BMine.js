@@ -55,13 +55,16 @@ function BMine() {
       userObj && userObj.lectures.length === 0 ? 
         <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "center"}}>
         <h1>
-          탐색을 먼저 해주세요
+          Please Search the Lectures on the "Search" Menu!
         </h1>
+        <img src = "https://cdn-icons.flaticon.com/png/512/1481/premium/1481058.png?token=exp=1648287862~hmac=a2f3224e43c0955c30a8471fa55e8a6c" width = {100} height = {100}/>
       </Grid>
         :
       <Grid container sx = {{display : "flex", flexDirection : "row", justifyContent : "center"}}>
+        <img src = "https://cdn-icons-png.flaticon.com/512/545/545680.png" width = {150} height = {150}/>
         <h1>
-          배너에서 항목을 눌러주세요.
+          <p></p>
+          Please Click the Lecture on the banner!
         </h1>
       </Grid>
     )

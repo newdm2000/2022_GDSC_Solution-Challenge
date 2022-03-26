@@ -15,7 +15,7 @@ function Search() {
   return (
     <Box sx = {{display : "flex"}}>
       <Button name="develop" onClick={onClick}  sx = {{flex : "1 1", fontSize:'23px'}} >
-        개발 강의 탐색
+        Development Lectures
       </Button>
       {/* <Button name="bootcamp" onClick={onClick}>
         부트 캠프 탐색

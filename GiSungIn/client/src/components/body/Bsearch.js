@@ -68,7 +68,7 @@ function Bsearch() {
   return (
     <>
     {
-    (num > -1 && !lid) ? <h4>모든 강의를 탐색하셨습니다!</h4> 
+    (num > -1 && !lid) ? <h4>You've Searched All Lectures that we Prepared. Please Refresh Page!</h4> 
     : (
         <Grid container sx = {{height : 1, display : "flex", flexDirection : "row", justifyContent : "space-evenly", alignItems : "center"}}>
         <Grid item>
