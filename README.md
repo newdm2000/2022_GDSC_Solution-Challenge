@@ -43,7 +43,7 @@ If you are interested in or willing to participate in the source recommended on 
 ### Backend  
 • FireBase
 We are provided multiple functional tools which include Backend, DataBase, Hosting and Authentication easily from Firebase
-### DataBase
+### DataBase 
 • FireStore     
 
 ## Guide to Execution
@@ -55,7 +55,7 @@ $git clone https://github.com/newdm2000/2022_GDSC_Solution-Challenge.git
 $cd 2022_GDSC_Solution-Challenge/GiSungIn/client
 $npm install
 ```
-3. connect firebase
+3. connect firebase   
 • Create an .env file in the 2022_GDSC_Solution-Challenge/GiSungIn/client path.    
 • Please put the firebase CLI in the form below in ......      
 ```
